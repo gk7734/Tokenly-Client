@@ -1,0 +1,52 @@
+@use "@/styles/base/typography.module.scss" as *;
+
+.navbarText {
+  display: flex;
+  width: fit-content;
+  height: 20px;
+  align-items: center;
+  gap: 20px;
+
+  .hoverAnimation {
+    width: 4px;
+    height: 10px;
+    border-radius: 0 40px 40px 0;
+    background: #fbfbfb;
+  }
+
+  .textIconWrap {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+
+    .navbarIcon {
+      cursor: pointer;
+    }
+
+    &:has(.navbarIcon:hover) .navbarTitle {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .navbarTitle {
+      position: absolute;
+      left: 30px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.18s ease-in-out, transform 0.18s ease-in-out;
+      margin: 0;
+      font-family: var(--font-suite), sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      color: white;
+    }
+  }
+
+  &:has(.textIconWrap:hover) .hoverAnimation {
+    transition: height 0.18s ease-in-out;
+    height: 20px;
+  }
+}
