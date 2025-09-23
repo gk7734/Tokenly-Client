@@ -1,0 +1,43 @@
+@use './color/colorToken.module.scss' as tokens;
+@use './color/sementic.module.scss' as semantic;
+
+// CSS Reset
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: semantic.$background-normal;
+  color: semantic.$label-normal;
+  line-height: 1.5;
+}
+
+// CSS Custom Properties
+:root {
+  // Primary colors
+  --color-primary: #{tokens.$green50};
+  --color-primary-light: #{tokens.$green40};
+  --color-primary-dark: #{tokens.$green60};
+
+  // Semantic colors
+  --color-background: #{semantic.$background-normal};
+  --color-surface: #{semantic.$fill-normal};
+  --color-border: #{semantic.$line-normal};
+  --color-text: #{semantic.$label-normal};
+  --color-text-secondary: #{semantic.$label-alternative};
+
+  // Status colors
+  --color-success: #{semantic.$status-positive};
+  --color-error: #{semantic.$status-negative};
+  --color-warning: #{semantic.$status-cautionary};
+}
+

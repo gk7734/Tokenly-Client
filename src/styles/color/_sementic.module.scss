@@ -1,0 +1,31 @@
+@use './colorToken.module.scss' as tokens;
+
+$primary-normal: tokens.$green50;
+$primary-alternative: rgba(72, 213, 65, 0.65);
+$primary-assistive: rgba(72, 213, 65, 0.5);
+
+$label-normal: tokens.$netural0;
+$label-strong: tokens.$netural5;
+$label-neutral: tokens.$netural25;
+$label-alternative: tokens.$netural50;
+$label-assistive: tokens.$netural70;
+$label-disabled: tokens.$netural90;
+
+$line-normal: tokens.$netural90;
+$line-neutral: tokens.$netural95;
+$line-alternative: tokens.$netural99;
+
+$fill-normal: tokens.$netural99;
+$fill-neutral: tokens.$netural97;
+$fill-alternative: tokens.$netural95;
+
+$background-normal: tokens.$netural100;
+$background-neutral: tokens.$netural99;
+$background-alternative: tokens.$netural95;
+
+$status-negative: tokens.$red50;
+$status-cautionary: tokens.$yellow50;
+$status-positive: tokens.$green50;
+
+$static-white: tokens.$common100;
+$static-black: tokens.$common0;

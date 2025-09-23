@@ -1,0 +1,71 @@
+// Spacing System
+
+// Base spacing scale (4px base unit)
+$space-0: 0;
+$space-1: 0.25rem;   // 4px
+$space-2: 0.5rem;    // 8px
+$space-3: 0.75rem;   // 12px
+$space-4: 1rem;      // 16px
+$space-5: 1.25rem;   // 20px
+$space-6: 1.5rem;    // 24px
+$space-8: 2rem;      // 32px
+$space-10: 2.5rem;   // 40px
+$space-12: 3rem;     // 48px
+$space-16: 4rem;     // 64px
+$space-20: 5rem;     // 80px
+$space-24: 6rem;     // 96px
+$space-32: 8rem;     // 128px
+
+// Component spacing
+$padding-xs: $space-2;
+$padding-sm: $space-3;
+$padding-md: $space-4;
+$padding-lg: $space-6;
+$padding-xl: $space-8;
+
+$margin-xs: $space-2;
+$margin-sm: $space-3;
+$margin-md: $space-4;
+$margin-lg: $space-6;
+$margin-xl: $space-8;
+
+// Gap spacing for flexbox/grid
+$gap-xs: $space-2;
+$gap-sm: $space-3;
+$gap-md: $space-4;
+$gap-lg: $space-6;
+$gap-xl: $space-8;
+
+// Layout spacing
+$section-spacing: $space-20;
+$container-spacing: $space-8;
+$component-spacing: $space-6;
+
+// Spacing mixins
+@mixin padding-all($size) {
+  padding: $size;
+}
+
+@mixin padding-x($size) {
+  padding-left: $size;
+  padding-right: $size;
+}
+
+@mixin padding-y($size) {
+  padding-top: $size;
+  padding-bottom: $size;
+}
+
+@mixin margin-all($size) {
+  margin: $size;
+}
+
+@mixin margin-x($size) {
+  margin-left: $size;
+  margin-right: $size;
+}
+
+@mixin margin-y($size) {
+  margin-top: $size;
+  margin-bottom: $size;
+}
