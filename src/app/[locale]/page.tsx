@@ -1,46 +1,51 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { useWeb3Auth } from '@/contexts/Web3AuthContext';
+import { useUserStore } from '@/stores/userStore';
 import styles from './page.module.css';
 
 export default function Home() {
   const {
     loggedIn,
     loading,
-    user,
     login,
     logout,
     getAccounts,
     getBalance,
-    signMessage
+    signMessage,
+    provider
   } = useWeb3Auth();
 
-  const [accounts, setAccounts] = useState<string[]>([]);
+  const { user, walletAddress, avatarUrl, setWalletAddress } = useUserStore();
+
   const [balance, setBalance] = useState<string>('');
   const [signature, setSignature] = useState<string>('');
+
+  const handleGetAccounts = useCallback(async () => {
+    const accs = await getAccounts();
+    if (accs.length > 0) {
+      setWalletAddress(accs[0]);
+    }
+  }, [getAccounts, setWalletAddress]);
+
+  // Auto-fetch accounts on login for external wallets
+  useEffect(() => {
+    const hasUserInfo = user && Object.keys(user).length > 0;
+    if (loggedIn && !hasUserInfo && provider) {
+      void handleGetAccounts();
+    }
+  }, [loggedIn, user, provider, handleGetAccounts]);
 
   const handleLogin = async () => {
     await login();
   };
 
-  // Generate avatar for external wallets
-  const getAvatarUrl = (address: string) => {
-    // Using DiceBear API for avatar generation
-    return `https://api.dicebear.com/7.x/identicon/svg?seed=${address}`;
-  };
-
   const handleLogout = async () => {
     await logout();
-    setAccounts([]);
     setBalance('');
     setSignature('');
-  };
-
-  const handleGetAccounts = async () => {
-    const accs = await getAccounts();
-    setAccounts(accs);
   };
 
   const handleGetBalance = async () => {
@@ -101,9 +106,9 @@ export default function Home() {
                 </>
               ) : (
                 <>
-                  {accounts.length > 0 && (
+                  {avatarUrl && walletAddress && (
                     <Image
-                      src={getAvatarUrl(accounts[0])}
+                      src={avatarUrl}
                       alt="Wallet Avatar"
                       width={50}
                       height={50}
@@ -112,9 +117,9 @@ export default function Home() {
                     />
                   )}
                   <p>Connected with external wallet</p>
-                  {accounts.length > 0 && (
+                  {walletAddress && (
                     <p style={{ fontSize: '12px' }}>
-                      {accounts[0].slice(0, 6)}...{accounts[0].slice(-4)}
+                      {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
                     </p>
                   )}
                 </>
@@ -145,10 +150,10 @@ export default function Home() {
               </button>
             </div>
 
-            {accounts.length > 0 && (
+            {walletAddress && (
               <div className={styles.result}>
                 <h3>Wallet Address:</h3>
-                <code>{accounts[0]}</code>
+                <code>{walletAddress}</code>
               </div>
             )}
 

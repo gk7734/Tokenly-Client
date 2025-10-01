@@ -3,8 +3,9 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode, useCallback, useMemo } from "react";
 import { IProvider, UserInfo } from "@web3auth/base";
 import { web3auth } from "@/lib/web3auth";
+import { useUserStore } from "@/stores/userStore";
 
-interface Web3AuthContextType {
+export interface Web3AuthContextType {
   provider: IProvider | null;
   loggedIn: boolean;
   loading: boolean;
@@ -39,7 +40,8 @@ export const Web3AuthProvider: React.FC<Web3AuthProviderProps> = ({ children }) 
   const [provider, setProvider] = useState<IProvider | null>(null);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<Partial<UserInfo> | null>(null);
+
+  const { user, setUser: setUserStore, clearUser } = useUserStore();
 
   const initializeWeb3Auth = useCallback(async () => {
     try {
@@ -51,7 +53,7 @@ export const Web3AuthProvider: React.FC<Web3AuthProviderProps> = ({ children }) 
 
         try {
           const userInfo = await web3auth.getUserInfo();
-          setUser(userInfo);
+          setUserStore(userInfo);
         } catch (error) {
           console.warn("Could not get user info:", error);
         }
@@ -61,7 +63,7 @@ export const Web3AuthProvider: React.FC<Web3AuthProviderProps> = ({ children }) 
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [setUserStore]);
 
   useEffect(() => {
     void initializeWeb3Auth();
@@ -85,13 +87,17 @@ export const Web3AuthProvider: React.FC<Web3AuthProviderProps> = ({ children }) 
         setProvider(web3auth.provider);
         setLoggedIn(true);
 
-        const userInfo = await web3auth.getUserInfo();
-        setUser(userInfo);
+        try {
+          const userInfo = await web3auth.getUserInfo();
+          setUserStore(userInfo);
+        } catch (err) {
+          console.warn("No social login user info (external wallet)");
+        }
       }
     } catch (error) {
       console.error("Error during login:", error);
     }
-  }, [loading]);
+  }, [loading, setUserStore]);
 
   const logout = useCallback(async (): Promise<void> => {
     if (!web3auth) {
@@ -103,11 +109,11 @@ export const Web3AuthProvider: React.FC<Web3AuthProviderProps> = ({ children }) 
       await web3auth.logout();
       setProvider(null);
       setLoggedIn(false);
-      setUser(null);
+      clearUser();
     } catch (error) {
       console.error("Error during logout:", error);
     }
-  }, []);
+  }, [clearUser]);
 
   const getUserInfo = useCallback(async (): Promise<Partial<UserInfo> | null> => {
     if (!web3auth.connected) {
