@@ -3,10 +3,11 @@ import "@/styles/globals.scss";
 import {hasLocale, NextIntlClientProvider} from "next-intl";
 import {notFound} from "next/navigation";
 import {routing} from "@/i18n/routing";
-import localFont from "next/dist/compiled/@next/font/dist/local";
+import localFont from "next/font/local";
+import { Web3AuthProvider } from "@/contexts/Web3AuthContext";
 
 const suite = localFont({
-  src: "/public/fonts/SUITE-Variable.ttf",
+  src: "../../../public/fonts/SUITE-Variable.ttf",
   variable: "--font-suite",
   display: "swap",
   preload: true,
@@ -34,9 +35,11 @@ export default async function RootLayout({
   return (
     <html lang="ko">
       <body className={`${suite.className}`}>
-        <NextIntlClientProvider>
-          {children}
-        </NextIntlClientProvider>
+        <Web3AuthProvider>
+          <NextIntlClientProvider>
+            {children}
+          </NextIntlClientProvider>
+        </Web3AuthProvider>
       </body>
     </html>
   );

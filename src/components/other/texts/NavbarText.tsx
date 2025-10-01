@@ -12,8 +12,8 @@ const NavbarText = ({ title, icon }: NavbarTextProps) => {
       <div className={styles.navbarText}>
         <div className={styles.hoverAnimation} />
         <div className={styles.textIconWrap}>
-          <IoHome className={styles.navbarIcon} size={24} color={'#fbfbfb'} />
-          <h2 className={styles.navbarTitle}>Test</h2>
+          {icon}
+          <h2 className={styles.navbarTitle}>{title}</h2>
         </div>
       </div>
   )
