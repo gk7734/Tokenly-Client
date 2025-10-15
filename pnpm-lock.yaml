@@ -14,6 +14,9 @@ dependencies:
   '@web3auth/modal':
     specifier: ^10.3.1
     version: 10.3.1(@babel/runtime@7.28.4)(@solana/web3.js@1.98.4)(react-dom@19.1.0)(react@19.1.0)(typescript@5.9.2)(viem@2.37.9)
+  lucide-react:
+    specifier: ^0.545.0
+    version: 0.545.0(react@19.1.0)
   next:
     specifier: 15.5.3
     version: 15.5.3(@babel/core@7.28.4)(react-dom@19.1.0)(react@19.1.0)(sass@1.93.2)
@@ -35,6 +38,9 @@ dependencies:
   wagmi:
     specifier: ^2.17.2
     version: 2.17.5(@tanstack/react-query@5.90.2)(@types/react@19.1.16)(react@19.1.0)(typescript@5.9.2)(viem@2.37.9)
+  zustand:
+    specifier: ^5.0.8
+    version: 5.0.8(@types/react@19.1.16)(react@19.1.0)(use-sync-external-store@1.4.0)
 
 devDependencies:
   '@eslint/eslintrc':
@@ -2319,7 +2325,7 @@ packages:
       '@noble/hashes': 1.8.0
       '@scure/base': 1.2.6
       '@types/debug': 4.1.12
-      debug: 4.3.4
+      debug: 4.4.3
       pony-cause: 2.1.11
       semver: 7.7.2
       uuid: 9.0.1
@@ -9048,6 +9054,14 @@ packages:
     dependencies:
       yallist: 3.1.1
 
+  /lucide-react@0.545.0(react@19.1.0):
+    resolution: {integrity: sha512-7r1/yUuflQDSt4f1bpn5ZAocyIxcTyVyBBChSVtBKn5M+392cPmI5YJMWOJKk/HUWGm5wg83chlAZtCcGbEZtw==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
+    dependencies:
+      react: 19.1.0
+    dev: false
+
   /lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
     hasBin: true
@@ -9523,7 +9537,7 @@ packages:
     dependencies:
       '@adraffy/ens-normalize': 1.11.1
       '@noble/curves': 1.8.1
-      '@noble/hashes': 1.7.1
+      '@noble/hashes': 1.8.0
       '@scure/bip32': 1.6.2
       '@scure/bip39': 1.5.4
       abitype: 1.0.8(typescript@5.9.2)

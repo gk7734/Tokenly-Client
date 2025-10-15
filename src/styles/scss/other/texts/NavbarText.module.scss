@@ -3,22 +3,22 @@
 .navbarText {
   display: flex;
   width: fit-content;
-  height: 20px;
+  height: fit-content;
   align-items: center;
-  gap: 20px;
+  gap: 2rem;
 
   .hoverAnimation {
-    width: 4px;
-    height: 10px;
-    border-radius: 0 40px 40px 0;
+    width: 0.4rem;
+    height: 1rem;
+    border-radius: 0 4rem 4rem 0;
     background: #fbfbfb;
+    transition: height 0.2s ease-in-out;
   }
 
   .textIconWrap {
     display: flex;
     width: fit-content;
     align-items: center;
-    gap: 5px;
     position: relative;
 
     .navbarIcon {
@@ -32,7 +32,7 @@
 
     .navbarTitle {
       position: absolute;
-      left: 30px;
+      left: 3rem;
       white-space: nowrap;
       opacity: 0;
       transform: translateX(-10px);
@@ -40,13 +40,12 @@
       margin: 0;
       font-family: var(--font-suite), sans-serif;
       font-weight: 600;
-      font-size: 16px;
+      font-size: 1.6rem;
       color: white;
     }
   }
 
   &:has(.textIconWrap:hover) .hoverAnimation {
-    transition: height 0.18s ease-in-out;
-    height: 20px;
+    height: 2rem;
   }
 }

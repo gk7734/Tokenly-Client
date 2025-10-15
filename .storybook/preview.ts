@@ -31,6 +31,7 @@ const preview: Preview = {
         cellAmount: 5,
       },
     },
+    layout: 'fullscreen',
   },
 };
 

@@ -14,6 +14,7 @@
     "@tanstack/react-query": "^5.90.2",
     "@web3auth/base": "^9.7.0",
     "@web3auth/modal": "^10.3.1",
+    "lucide-react": "^0.545.0",
     "next": "15.5.3",
     "next-intl": "^4.3.9",
     "react": "19.1.0",
