@@ -1,0 +1,66 @@
+.feed {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+
+  .profileImage {
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.2s ease;
+
+    &:hover {
+      box-shadow: 0 0 0 0.6rem #313131;
+    }
+  }
+
+  .feedFlexBox {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    .profileName {
+      margin-left: 0.8rem;
+      font-family: var(--font-suite), sans-serif;
+      font-weight: 600;
+      font-size: 1.4rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .feedWrap {
+      display: flex;
+      flex-direction: column;
+      padding: 1.6rem;
+      align-items: center;
+      width: 60rem;
+      height: fit-content;
+      background: #2c2c2c;
+      border-radius: 2rem;
+      cursor: pointer;
+      transition: box-shadow 0.2s ease;
+
+      &:hover {
+        box-shadow: 0 0.4rem 1.6rem rgba(0, 0, 0, 0.2), 0 0.2rem 0.8rem rgba(0, 0, 0, 0.1                                                );
+      }
+
+      .feedImage {
+        margin-bottom: 2.4rem;
+        width: 100%;
+        height: fit-content;
+        object-fit: fill;
+        border-radius: 1.2rem;
+        box-shadow: 0 0.2rem 1.2rem rgba(0, 0, 0, 0.3);
+      }
+
+      .feedDescription {
+        font-family: var(--font-suite), sans-serif;
+        font-weight: 400;
+        font-size: 1.6rem;
+        line-height: 160%;
+        text-wrap: wrap;
+        color: white;
+        text-align: left;
+        width: 100%;
+      }
+    }
+  }
+}

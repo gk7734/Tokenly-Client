@@ -1,0 +1,25 @@
+.feedActionBar {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 2.4rem;
+  width: 100%;
+  height: fit-content;
+
+  .actionIcon {
+    cursor: pointer;
+  }
+
+  .actionHeart {
+    cursor: pointer;
+    transition: transform 0.15s ease;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &:active {
+      transform: scale(1.4);
+    }
+  }
+}
