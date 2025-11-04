@@ -18,19 +18,13 @@ const Feed = () => {
             <img src={"https://photographylife.com/wp-content/uploads/2014/06/Nikon-D810-Image-Sample-6.jpg"} alt={"feed-image"} className={styles.feedImage} />
             <h2 className={styles.feedDescription}>저희팀은 AI의 시대에서 인간찬가를 외치며
 
-              사람의 협업을 돕는 관리 툴을 만들고 있습니다.
-
-
-              저는 Aline.team이라는 개발 프로젝트 관리 툴을 만들고 있고,
-
-              BCTO라는 프로토타입인 BCTO를 먼저 Product Hunt에 올려봤어요.
-
-              3년의 노력 끝에 만족스러운 프로그램을 내놓았는데 반응이 무척 기대되네요.
-
-
-              더 많은 사람들에게 도달할 수 있도록
-
-              혹시 시간이 되신다면 프로덕트 헌트에서 저희 BCTO에 댓글이나 upvote 눌러주실 수 있나요?
+              사람의 협업을 돕는 관리 툴을 만들고 있습니다. <br/><br/>
+              저는 Aline.team이라는 개발 프로젝트 관리 툴을 만들고 있고, <br/>
+              BCTO라는 프로토타입인 BCTO를 먼저 Product Hunt에 올려봤어요. <br/>
+              3년의 노력 끝에 만족스러운 프로그램을 내놓았는데 반응이 무척 기대되네요.<br/><br/>
+              더 많은 사람들에게 도달할 수 있도록 <br/>
+              혹시 시간이 되신다면 프로덕트 헌트에서 <br/>
+              저희 BCTO에 댓글이나 upvote 눌러주실 수 있나요?
             </h2>
             <FeedActionBar />
           </div>

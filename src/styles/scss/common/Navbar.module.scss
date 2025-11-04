@@ -1,5 +1,7 @@
 .navBar {
-  position: fixed;
+  position: sticky;
+  top: 0;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   width: fit-content;
